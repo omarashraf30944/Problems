@@ -1,0 +1,19 @@
+class Solution {
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> result = new ArrayList();
+        int max = nums.length;
+        backtrack(nums,new ArrayList(),0,result);
+        return result;
+    }
+    public void backtrack(int[] nums,List<Integer> list,int start,List<List<Integer>> result){
+        if(nums.length == list.size()){
+            result.add(list);
+            return;
+            }
+        for(int i = 0;i <= list.size(); i++){
+            List<Integer> newperm = new ArrayList<>(list);
+            newperm.add(i,nums[start]);
+            backtrack(nums,newperm,start+1,result);
+        }
+    }
+}
